@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-5">
-    <app-liste></app-liste>
+    <app-liste
+      (eventToCv)="getClickedCandidate($event)"
+      [allCandidats]="tabCandidats"
+    ></app-liste>
   </div>
   <div class="col-7">
-    <app-details></app-details>
+    <app-details [targetCandidate]="selectedCandidate"></app-details>
   </div>
 </div>

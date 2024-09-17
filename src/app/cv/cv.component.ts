@@ -12,4 +12,9 @@ export class CvComponent {
     new Candidat(2, 'homer', 'simpson', 57, 'directeur', 'homer.png'),
     new Candidat(3, 'lisa', 'simpson', 21, 'designer', 'lisa.png'),
   ];
+  selectedCandidate: Candidat;
+
+  getClickedCandidate(cand) {
+    this.selectedCandidate = cand;
+  }
 }
