@@ -6,6 +6,11 @@
     ></app-liste>
   </div>
   <div class="col-7">
+    @if (selectedCandidate) {
     <app-details [targetCandidate]="selectedCandidate"></app-details>
+
+    } @else {
+    <h4>Veuillez sélectionner un candidat...</h4>
+    }
   </div>
 </div>
