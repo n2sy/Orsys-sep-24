@@ -1,0 +1,20 @@
+<h3>Je m'appelle {{ prenom }}</h3>
+
+<div [style.backgroundColor]="bgColor">Formation Angular</div>
+
+<button (click)="traitement()" class="btn btn-primary">Click me</button>
+
+<!-- <input [(ngModel)]="prenom" type="text" class="form-control" /> -->
+
+<input
+  #inp
+  [value]="prenom"
+  (input)="changerPrenom(inp)"
+  type="text"
+  class="form-control"
+/>
+
+<app-child
+  (sendMsgToParent)="traitementDuParent($event)"
+  [myColor]="bgColor"
+></app-child>
