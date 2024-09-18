@@ -33,6 +33,20 @@ export class ManageServersComponent {
     },
   ];
   selectedStatus = '';
+  promesse = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Café pour florian');
+    }, 3000);
+  });
+
+  addServer() {
+    this.allServers.push({
+      nom: 'NEW SERVER',
+      type: 'small',
+      date_d: new Date(),
+      statut: 'stable',
+    });
+  }
 
   affecterClass(st) {
     return {
