@@ -8,25 +8,25 @@ import { Component } from '@angular/core';
 export class ManageServersComponent {
   allServers = [
     {
-      nom: 'Production Server',
+      nom: 'production server',
       type: 'small',
       date_d: new Date(5, 6, 23),
       statut: 'critical',
     },
     {
-      nom: 'Development Testing Server',
+      nom: 'development testing server',
       type: 'large',
       date_d: new Date(3, 9, 24),
       statut: 'stable',
     },
     {
-      nom: 'Development Server',
+      nom: 'development server',
       type: 'medium',
       date_d: new Date(),
       statut: 'offline',
     },
     {
-      nom: 'Nidhal Server',
+      nom: 'nidhal server',
       type: 'small',
       date_d: new Date(),
       statut: 'stable',
