@@ -1,1 +1,26 @@
-<p>ms-word works!</p>
+<p
+  [ngStyle]="{
+    backgroundColor: bgColor,
+    color: txtColor,
+    fontSize: txtSize,
+    fontFamily: txtFont
+  }"
+>
+  Exercice de NgStyle
+</p>
+
+<label>Background Color</label>
+<input [(ngModel)]="bgColor" type="text" class="form-control" />
+
+<label>Text Color</label>
+<input [(ngModel)]="txtColor" type="text" class="form-control" />
+
+<label>Text Size</label>
+<input #sz (change)="changeSize(sz.value)" type="number" class="form-control" />
+
+<label>Text Font</label>
+<select [(ngModel)]="txtFont" class="form-control">
+  @for (font of listFonts; track $index) {
+  <option [value]="font">{{ font }} </option>
+  }
+</select>
