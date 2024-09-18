@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'short',
 })
 export class ShortPipe implements PipeTransform {
-  transform(value: string) {
-    console.log(value);
-    //return value;
+  transform(value: string, nb: number) {
+    if (value.length > nb) return value.substring(0, nb) + '...';
+    else return value;
   }
 }
