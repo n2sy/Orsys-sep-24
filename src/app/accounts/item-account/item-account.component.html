@@ -1,1 +1,31 @@
-<p>item-account works!</p>
+<div class="bordure">
+  <h3>{{ account.nom }}</h3>
+  <hr />
+  <p>This account is {{ account.statut }}</p>
+  <!-- @if (account.statut != 'active') {
+  <button (click)="changeStatus('active')" class="btn btn-success">
+    Set to 'active'
+  </button>
+  } -->
+  <button
+    [disabled]="account.statut == 'active'"
+    (click)="changeStatus('active')"
+    class="btn btn-success"
+  >
+    Set to 'active'
+  </button>
+  <button
+    [disabled]="account.statut == 'inactive'"
+    (click)="changeStatus('inactive')"
+    class="btn btn-danger"
+  >
+    Set to 'inactive'
+  </button>
+  <button
+    [disabled]="account.statut == 'unknown'"
+    (click)="changeStatus('unknown')"
+    class="btn btn-info"
+  >
+    Set to 'unknown'
+  </button>
+</div>

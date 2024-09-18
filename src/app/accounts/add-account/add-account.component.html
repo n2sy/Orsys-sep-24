@@ -1,1 +1,32 @@
-<p>add-account works!</p>
+<label>Account Name</label>
+<input #inpName type="text" class="form-control" />
+
+<label>Account Status</label>
+<select #selectStatut class="form-control">
+  @for (status of allStatus; track $index) {
+  <option [value]="status">{{ status }}</option>
+  }
+</select>
+
+<button
+  (click)="onAddAccount(inpName.value, selectStatut.value)"
+  class="btn btn-primary"
+>
+  Add Account
+</button>
+
+<!-- <label>Account Name</label>
+<input [(ngModel)]="newName" type="text" class="form-control" />
+
+<label>Account Status</label>
+<select [(ngModel)]="newStatus" class="form-control">
+  @for (status of allStatus; track $index) {
+  <option [value]="status">{{ status }}</option>
+  }
+</select>
+
+{{ newName }}
+
+{{ newStatus }}
+
+<button (click)="onAddAccount()" class="btn btn-primary">Add Account</button> -->
