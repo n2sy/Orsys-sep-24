@@ -22,6 +22,7 @@ import { NoAvatarPipe } from './pipes/no-avatar.pipe';
 import { RecruterComponent } from './recruter/recruter.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { INETUM_ROUTING } from './app.routing';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { INETUM_ROUTING } from './app.routing';
     NoAvatarPipe,
     RecruterComponent,
     AccueilComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, FormsModule, INETUM_ROUTING],
   providers: [],
