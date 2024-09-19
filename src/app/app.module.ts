@@ -23,6 +23,9 @@ import { RecruterComponent } from './recruter/recruter.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { INETUM_ROUTING } from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddComponent } from './add/add.component';
+import { UpdateComponent } from './update/update.component';
+import { InfosComponent } from './infos/infos.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     RecruterComponent,
     AccueilComponent,
     NavbarComponent,
+    AddComponent,
+    UpdateComponent,
+    InfosComponent,
   ],
   imports: [BrowserModule, FormsModule, INETUM_ROUTING],
   providers: [],
