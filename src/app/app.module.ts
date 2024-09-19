@@ -19,6 +19,7 @@ import { CustomDirDirective } from './custom-dir.directive';
 import { ShortPipe } from './pipes/short.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { NoAvatarPipe } from './pipes/no-avatar.pipe';
+import { RecruterComponent } from './recruter/recruter.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NoAvatarPipe } from './pipes/no-avatar.pipe';
     ShortPipe,
     FilterPipe,
     NoAvatarPipe,
+    RecruterComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
