@@ -26,6 +26,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
 import { InfosComponent } from './infos/infos.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { InfosComponent } from './infos/infos.component';
     AddComponent,
     UpdateComponent,
     InfosComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, INETUM_ROUTING],
   providers: [],
