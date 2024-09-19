@@ -1,0 +1,22 @@
+<form #f="ngForm">
+  <label for="">Login</label>
+  <input ngModel type="text" class="form-control" name="login" required email />
+
+  <label for="">Mot de passe</label>
+  <input
+    ngModel
+    name="password"
+    type="text"
+    class="form-control"
+    required
+    minlength="4"
+  />
+
+  <button type="submit" (click)="onSubmit(f)" class="btn btn-primary">
+    Se connecter
+  </button>
+
+  <pre>
+    {{ f.value | json }}
+  </pre>
+</form>
