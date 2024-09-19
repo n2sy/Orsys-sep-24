@@ -14,3 +14,4 @@ const myRoutes: Routes = [
 ];
 
 export let INETUM_ROUTING = RouterModule.forRoot(myRoutes);
+// Commentaire pour mattthieu
