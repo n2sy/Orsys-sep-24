@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  listeCompetences = ['', 'java', 'php', 'python'];
+
+  defaultComptence = 'php';
   onSubmit(f) {
     console.log(f);
   }

@@ -1,6 +1,18 @@
 <form #f="ngForm">
   <label for="">Login</label>
-  <input ngModel type="text" class="form-control" name="login" required email />
+  <input
+    #inpLogin="ngModel"
+    ngModel
+    type="text"
+    class="form-control"
+    name="login"
+    required
+    email
+  />
+
+  @if (inpLogin.invalid && inpLogin.touched) {
+  <div class="alert alert-danger">Veuillez saisir une adresse mail</div>
+  }
 
   <label for="">Mot de passe</label>
   <input
@@ -12,7 +24,22 @@
     minlength="4"
   />
 
-  <button type="submit" (click)="onSubmit(f)" class="btn btn-primary">
+  <label for="">Compétences</label>
+  <select name="competence" [ngModel]="defaultComptence" class="form-control">
+    @for (competence of listeCompetences; track $index) {
+    <option [value]="competence">{{ competence }}</option>
+    }
+  </select>
+
+  {{ defaultComptence }}
+
+  <br />
+  <button
+    [disabled]="f.invalid"
+    type="submit"
+    (click)="onSubmit(f)"
+    class="btn btn-primary"
+  >
     Se connecter
   </button>
 
