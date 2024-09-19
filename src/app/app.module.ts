@@ -20,6 +20,8 @@ import { ShortPipe } from './pipes/short.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { NoAvatarPipe } from './pipes/no-avatar.pipe';
 import { RecruterComponent } from './recruter/recruter.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { INETUM_ROUTING } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -41,8 +43,9 @@ import { RecruterComponent } from './recruter/recruter.component';
     FilterPipe,
     NoAvatarPipe,
     RecruterComponent,
+    AccueilComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, INETUM_ROUTING],
   providers: [],
   bootstrap: [AppComponent],
 })
