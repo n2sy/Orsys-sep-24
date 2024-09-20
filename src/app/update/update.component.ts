@@ -19,14 +19,28 @@ export class UpdateComponent {
   ngOnInit() {
     this.actRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
-        this.candidateToUpdate = this.candSer.getCandidatById(p.get('id'));
+        this.candSer.getCandidatByIdAPI(p.get('id')).subscribe({
+          next: (data: Candidat) => {
+            this.candidateToUpdate = data;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
       },
     });
   }
 
   onSubmit(fValue) {
-    fValue.id = this.candidateToUpdate.id;
-    this.candSer.updateCandidat(fValue);
-    this.router.navigateByUrl('/cv');
+    fValue._id = this.candidateToUpdate._id;
+    this.candSer.updateCandidatAPI(fValue).subscribe({
+      next: (response) => {
+        alert(response['message']);
+        this.router.navigateByUrl('/cv');
+      },
+      error: (err) => {
+        console.log('Probleme avec PUT');
+      },
+    });
   }
 }

@@ -1,7 +1,7 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
   <label for="">Prénom</label>
   <input
-    [ngModel]="candidateToUpdate.prenom"
+    [ngModel]="candidateToUpdate?.prenom"
     name="prenom"
     type="text"
     class="form-control"
@@ -9,7 +9,7 @@
 
   <label for="">Nom</label>
   <input
-    [ngModel]="candidateToUpdate.nom"
+    [ngModel]="candidateToUpdate?.nom"
     ngModel
     name="nom"
     type="text"
@@ -18,7 +18,7 @@
 
   <label for="">Age</label>
   <input
-    [ngModel]="candidateToUpdate.age"
+    [ngModel]="candidateToUpdate?.age"
     ngModel
     name="age"
     type="number"
@@ -27,7 +27,7 @@
 
   <label for="">Profession</label>
   <input
-    [ngModel]="candidateToUpdate.profession"
+    [ngModel]="candidateToUpdate?.profession"
     ngModel
     name="profession"
     type="text"
@@ -36,7 +36,7 @@
 
   <label for="">Avatar</label>
   <input
-    [ngModel]="candidateToUpdate.avatar"
+    [ngModel]="candidateToUpdate?.avatar"
     ngModel
     name="avatar"
     type="text"

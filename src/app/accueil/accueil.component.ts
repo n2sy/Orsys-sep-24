@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,7 +8,18 @@ import { Router } from '@angular/router';
   styleUrl: './accueil.component.css',
 })
 export class AccueilComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
+
+  ngOnInit() {
+    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 
   goToCv() {
     //traiteement

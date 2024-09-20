@@ -30,6 +30,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { ReactFormComponent } from './react-form/react-form.component';
 import { ExpObsComponent } from './exp-obs/exp-obs.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { ExpObsComponent } from './exp-obs/exp-obs.component';
     ExpObsComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, INETUM_ROUTING],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

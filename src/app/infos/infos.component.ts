@@ -29,7 +29,15 @@ export class InfosComponent {
     //2ème méthode avec Snapshot
     this.actRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
-        this.candidateToShow = this.candSer.getCandidatById(p.get('id'));
+        this.candSer.getCandidatByIdAPI(p.get('id')).subscribe({
+          next: (data: Candidat) => {
+            this.candidateToShow = data;
+          },
+          error: (err) => {
+            console.log('Erreur avec Get By');
+            this.router.navigateByUrl('/not-found');
+          },
+        });
       },
       // error : () => {
 
@@ -42,8 +50,15 @@ export class InfosComponent {
 
   onDelete() {
     if (confirm('Etes-vous sûr de vouloir supprimer ce candidat ?')) {
-      this.candSer.deleteCandidat(this.candidateToShow);
-      this.router.navigateByUrl('/cv');
+      this.candSer.deleteCandidatAPI(this.candidateToShow._id).subscribe({
+        next: (response) => {
+          alert(response['message']);
+          this.router.navigateByUrl('/cv');
+        },
+        error: (err) => {
+          console.log('Erreur avec DELETE');
+        },
+      });
     }
   }
 }

@@ -13,8 +13,23 @@ export class AddComponent {
     private router: Router
   ) {}
 
-  onSubmit(fValue) {
-    this.candSer.addCandidat(fValue);
-    this.router.navigateByUrl('/cv');
+  onSubmit(fValue, e) {
+    let formData = new FormData();
+    formData.append('avatar', e.target[4].files[0]);
+    this.candSer.uploadAvatar(formData).subscribe({
+      next: (response) => {
+        fValue.avatar = response['fileName'];
+        this.candSer.addCandidatAPI(fValue).subscribe({
+          next: (response) => {
+            //console.log(response);
+            alert(response['message']);
+            this.router.navigateByUrl('/cv');
+          },
+          error: (err) => {
+            console.log('Probleme avec le POST');
+          },
+        });
+      },
+    });
   }
 }
