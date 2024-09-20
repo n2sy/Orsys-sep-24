@@ -31,7 +31,7 @@ export class GestionCandidatsService {
   }
 
   addCandidatAPI(newCand) {
-    return this.http.post(`${this.link}/free`, newCand);
+    return this.http.post(`${this.link}`, newCand);
   }
 
   uploadAvatar(f: FormData) {
@@ -49,7 +49,7 @@ export class GestionCandidatsService {
   }
 
   updateCandidatAPI(uCand) {
-    return this.http.put(`${this.link}/free/${uCand._id}`, uCand);
+    return this.http.put(`${this.link}/${uCand._id}`, uCand);
   }
 
   deleteCandidat(dCand) {
@@ -58,7 +58,7 @@ export class GestionCandidatsService {
   }
 
   deleteCandidatAPI(id) {
-    return this.http.delete(`${this.link}/free/${id}`);
+    return this.http.delete(`${this.link}/${id}`);
   }
 
   showInfos() {

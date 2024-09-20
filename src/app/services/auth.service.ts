@@ -10,12 +10,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   seConnecter(identifiants) {
-    console.log(identifiants);
-
     return this.http.post(`${this.link}/login`, identifiants);
   }
 
-  Inscription(identifiants) {}
+  Inscription(identifiants) {
+    return this.http.post(`${this.link}/register`, identifiants);
+  }
 
   estConnecte() {}
 

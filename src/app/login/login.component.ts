@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,16 @@ export class LoginComponent {
 
   defaultComptence = 'php';
   showError = false;
+  showRegister = false;
 
-  constructor(private authSer: AuthService) {}
-  onSubmit(f) {
+  constructor(private authSer: AuthService, private router: Router) {}
+  onLogin(f) {
     //console.log(f);
     this.authSer.seConnecter(f.value).subscribe({
       next: (response) => {
-        console.log(response);
+        alert(response['message']);
+        localStorage.setItem('access_token', response['token']);
+        this.router.navigateByUrl('/cv');
       },
       error: (err) => {
         console.log(err);
@@ -27,6 +31,23 @@ export class LoginComponent {
         f.reset();
       },
     });
+  }
+  onRegister(f) {
+    //console.log(f);
+    this.authSer.Inscription(f.value).subscribe({
+      next: (response) => {
+        alert(response['message']);
+        this.toggleShowRegister();
+        f.reset();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  toggleShowRegister() {
+    this.showRegister = !this.showRegister;
   }
 
   onReset(f: NgForm) {

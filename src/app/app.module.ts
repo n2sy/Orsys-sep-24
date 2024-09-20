@@ -30,7 +30,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { ReactFormComponent } from './react-form/react-form.component';
 import { ExpObsComponent } from './exp-obs/exp-obs.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { addTokenInterceptor } from './add-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { provideHttpClient } from '@angular/common/http';
     ExpObsComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, INETUM_ROUTING],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(withInterceptors([addTokenInterceptor]))],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

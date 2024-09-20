@@ -3,7 +3,7 @@
 
 }
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm">
   <label for="">Login</label>
   <input
     #inpLogin="ngModel"
@@ -28,6 +28,37 @@
     required
     minlength="4"
   />
+
+  <div class="row">
+    <div class="col-6 offset-4">
+      @if(!showRegister) {
+      <button
+        (click)="onLogin(f)"
+        [disabled]="f.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Se connecter
+      </button>
+      <button
+        (click)="toggleShowRegister()"
+        type="button"
+        class="btn btn-warning"
+      >
+        Switch to Register
+      </button>
+
+      } @else {
+      <button (click)="onRegister(f)" type="submit" class="btn btn-danger">
+        S'inscrire
+      </button>
+      <button (click)="toggleShowRegister()" type="button" class="btn btn-dark">
+        Switch to Login
+      </button>
+
+      }
+    </div>
+  </div>
 
   <!-- 
 
@@ -75,9 +106,6 @@
   <div class="alert alert-danger">Le pattern est "nidhal"</div>
   } } -->
 
-  <button [disabled]="f.invalid" type="submit" class="btn btn-primary">
-    Se connecter
-  </button>
   <!-- <button (click)="onReset(f)" type="button" class="btn btn-warning">
     Reset
   </button>
