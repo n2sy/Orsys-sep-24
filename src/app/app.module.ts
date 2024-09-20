@@ -29,6 +29,7 @@ import { InfosComponent } from './infos/infos.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { ReactFormComponent } from './react-form/react-form.component';
+import { ExpObsComponent } from './exp-obs/exp-obs.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ReactFormComponent } from './react-form/react-form.component';
     NotFoundComponent,
     LoginComponent,
     ReactFormComponent,
+    ExpObsComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, INETUM_ROUTING],
   providers: [],
