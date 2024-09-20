@@ -9,6 +9,9 @@ import { UpdateComponent } from './update/update.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { ReactFormComponent } from './react-form/react-form.component';
+import { allowGuard } from './guards/allow.guard';
+import { denyGuard } from './guards/deny.guard';
+import { navigationGuard } from './guards/navigation.guard';
 
 const myRoutes: Routes = [
   //Avec children V2
@@ -39,12 +42,16 @@ const myRoutes: Routes = [
     path: 'cv',
     children: [
       { path: '', component: CvComponent },
-      { path: 'add', component: AddComponent },
+      { path: 'add', component: AddComponent, canActivate: [allowGuard] },
       {
         path: ':id',
         children: [
           { path: '', component: InfosComponent },
-          { path: 'edit', component: UpdateComponent },
+          {
+            path: 'edit',
+            component: UpdateComponent,
+            canActivate: [allowGuard],
+          },
         ],
       },
     ],
@@ -52,7 +59,12 @@ const myRoutes: Routes = [
   { path: 'accounts', component: HomeAccountComponent },
   { path: 'ms-word', component: MsWordComponent },
   { path: 'react-form', component: ReactFormComponent },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [denyGuard],
+    canDeactivate: [navigationGuard],
+  },
   {
     path: 'servers',
     loadChildren: () => import('./sub/sub.module').then((m) => m.SubModule),
