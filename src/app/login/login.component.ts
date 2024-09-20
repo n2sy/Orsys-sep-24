@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,21 @@ export class LoginComponent {
   myComment = 'Rien à signaler...';
 
   defaultComptence = 'php';
+  showError = false;
+
+  constructor(private authSer: AuthService) {}
   onSubmit(f) {
-    console.log(f);
+    //console.log(f);
+    this.authSer.seConnecter(f.value).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (err) => {
+        console.log(err);
+        this.showError = true;
+        f.reset();
+      },
+    });
   }
 
   onReset(f: NgForm) {

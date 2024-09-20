@@ -1,18 +1,24 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+@if (showError) {
+<div class="alert alert-danger">Login et/ou mot de passe invalide(s)</div>
+
+}
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <label for="">Login</label>
   <input
     #inpLogin="ngModel"
     ngModel
     type="text"
     class="form-control"
-    name="login"
+    name="email"
     required
     email
   />
 
   @if (inpLogin.invalid && inpLogin.touched) {
   <div class="alert alert-danger">Veuillez saisir une adresse mail</div>
-  } @if(inpLogin.valid) {
+  }
+
   <label for="">Mot de passe</label>
   <input
     ngModel
@@ -23,7 +29,7 @@
     minlength="4"
   />
 
-  }
+  <!-- 
 
   <div ngModelGroup="infos" #divInfos="ngModelGroup">
     <label for="">Compétences</label>
@@ -67,17 +73,17 @@
   <div class="alert alert-danger">Le nombre minimal de caractères est 5</div>
   } @if(inpErrors.errors['pattern']) {
   <div class="alert alert-danger">Le pattern est "nidhal"</div>
-  } }
+  } } -->
 
   <button [disabled]="f.invalid" type="submit" class="btn btn-primary">
     Se connecter
   </button>
-  <button (click)="onReset(f)" type="button" class="btn btn-warning">
+  <!-- <button (click)="onReset(f)" type="button" class="btn btn-warning">
     Reset
   </button>
   <button (click)="modifierForm(f)" type="button" class="btn btn-info">
     Modifier
-  </button>
+  </button> -->
 
   <pre>
     {{ f.value | json }}
