@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChildComponent } from './child/child.component';
 import { CvComponent } from './cv/cv.component';
 import { ListeComponent } from './liste/liste.component';
@@ -28,6 +28,7 @@ import { UpdateComponent } from './update/update.component';
 import { InfosComponent } from './infos/infos.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { ReactFormComponent } from './react-form/react-form.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +57,9 @@ import { LoginComponent } from './login/login.component';
     InfosComponent,
     NotFoundComponent,
     LoginComponent,
+    ReactFormComponent,
   ],
-  imports: [BrowserModule, FormsModule, INETUM_ROUTING],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, INETUM_ROUTING],
   providers: [],
   bootstrap: [AppComponent],
 })

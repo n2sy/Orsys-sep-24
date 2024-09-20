@@ -1,0 +1,31 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <label for="">Nom d'utilisateur</label>
+  <input type="text" class="form-control" formControlName="username" />
+
+  <label for="">Addresse mail</label>
+  <input type="text" class="form-control" formControlName="addrMail" />
+
+  @if (signUpForm.get('addrMail').invalid && signUpForm.get('addrMail').dirty )
+  {
+  <div class="alert alert-danger">Veuillez saisir une addresse mail valide</div>
+
+  }
+
+  <div formArrayName="skills">
+    <label>Skills</label>
+    <button (click)="addSkill()">+</button>
+    @for (ctrl of formSkills.controls; track $index) {
+    <div class="form-group">
+      <input type="text" class="form-control" [formControl]="$any(ctrl)" />
+    </div>
+
+    }
+  </div>
+
+  <pre>
+  {{ signUpForm.value | json }}
+</pre
+  >
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

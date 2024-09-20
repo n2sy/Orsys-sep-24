@@ -8,6 +8,7 @@ import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { ReactFormComponent } from './react-form/react-form.component';
 
 const myRoutes: Routes = [
   //Avec children V2
@@ -50,6 +51,7 @@ const myRoutes: Routes = [
   },
   { path: 'accounts', component: HomeAccountComponent },
   { path: 'ms-word', component: MsWordComponent },
+  { path: 'react-form', component: ReactFormComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'servers',
