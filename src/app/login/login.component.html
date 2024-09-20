@@ -1,4 +1,4 @@
-<form #f="ngForm">
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
   <label for="">Login</label>
   <input
     #inpLogin="ngModel"
@@ -12,8 +12,7 @@
 
   @if (inpLogin.invalid && inpLogin.touched) {
   <div class="alert alert-danger">Veuillez saisir une adresse mail</div>
-  }
-
+  } @if(inpLogin.valid) {
   <label for="">Mot de passe</label>
   <input
     ngModel
@@ -24,23 +23,60 @@
     minlength="4"
   />
 
-  <label for="">Compétences</label>
-  <select name="competence" [ngModel]="defaultComptence" class="form-control">
-    @for (competence of listeCompetences; track $index) {
-    <option [value]="competence">{{ competence }}</option>
-    }
-  </select>
+  }
 
-  {{ defaultComptence }}
+  <div ngModelGroup="infos" #divInfos="ngModelGroup">
+    <label for="">Compétences</label>
+    <select name="competence" [ngModel]="defaultComptence" class="form-control">
+      @for (competence of listeCompetences; track $index) {
+      <option [value]="competence">{{ competence }}</option>
+      }
+    </select>
+
+    {{ defaultComptence }}
+    <br />
+
+    Commentaire :
+    <textarea
+      name="commentaire"
+      [(ngModel)]="myComment"
+      cols="5"
+      rows="4"
+      class="form-control"
+    ></textarea>
+
+    {{ myComment }}
+  </div>
 
   <br />
-  <button
-    [disabled]="f.invalid"
-    type="submit"
-    (click)="onSubmit(f)"
-    class="btn btn-primary"
-  >
+
+  <label for="">Gestion des erreurs</label>
+  <input
+    #inpErrors="ngModel"
+    ngModel
+    name="erreurs"
+    type="text"
+    required
+    minlength="5"
+    pattern="nidhal"
+    class="form-control"
+  />
+  @if (inpErrors.invalid) { @if(inpErrors.errors['required']) {
+  <div class="alert alert-danger">Ce champ est obligatoire</div>
+  } @if(inpErrors.errors['minlength']) {
+  <div class="alert alert-danger">Le nombre minimal de caractères est 5</div>
+  } @if(inpErrors.errors['pattern']) {
+  <div class="alert alert-danger">Le pattern est "nidhal"</div>
+  } }
+
+  <button [disabled]="f.invalid" type="submit" class="btn btn-primary">
     Se connecter
+  </button>
+  <button (click)="onReset(f)" type="button" class="btn btn-warning">
+    Reset
+  </button>
+  <button (click)="modifierForm(f)" type="button" class="btn btn-info">
+    Modifier
   </button>
 
   <pre>
