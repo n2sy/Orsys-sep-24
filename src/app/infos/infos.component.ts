@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { GestionCandidatsService } from '../services/gestion-candidats.service';
+import { Candidat } from '../models/candidat';
 
 @Component({
   selector: 'app-infos',
@@ -7,8 +9,12 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrl: './infos.component.css',
 })
 export class InfosComponent {
-  myId;
-  constructor(private actRoute: ActivatedRoute) {}
+  candidateToShow: Candidat;
+  constructor(
+    private actRoute: ActivatedRoute,
+    private candSer: GestionCandidatsService,
+    private router: Router
+  ) {}
 
   // ngOnChanges() {
   //   //console.log(this.actRoute.snapshot.params['id']);
@@ -23,7 +29,7 @@ export class InfosComponent {
     //2ème méthode avec Snapshot
     this.actRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
-        this.myId = p.get('id');
+        this.candidateToShow = this.candSer.getCandidatById(p.get('id'));
       },
       // error : () => {
 
@@ -32,5 +38,12 @@ export class InfosComponent {
 
       // }
     });
+  }
+
+  onDelete() {
+    if (confirm('Etes-vous sûr de vouloir supprimer ce candidat ?')) {
+      this.candSer.deleteCandidat(this.candidateToShow);
+      this.router.navigateByUrl('/cv');
+    }
   }
 }

@@ -14,12 +14,25 @@ export class GestionCandidatsService {
   getAllCandidats() {
     return this.listeCandidats;
   }
-
-  addCandidat() {
-    this.listeCandidats.push(
-      new Candidat(3, 'NEW', 'CANDIDAT', 21, 'designer', 'lisa.png')
-    );
+  getCandidatById(id) {
+    return this.listeCandidats.find((cand) => cand.id == id);
   }
+
+  addCandidat(newCand) {
+    newCand.id = this.listeCandidats[this.listeCandidats.length - 1].id + 1;
+    this.listeCandidats.push(newCand);
+  }
+
+  updateCandidat(uCand) {
+    let i = this.listeCandidats.findIndex((cand) => cand.id == uCand.id);
+    this.listeCandidats[i] = uCand;
+  }
+
+  deleteCandidat(dCand) {
+    let i = this.listeCandidats.findIndex((cand) => cand.id == dCand.id);
+    this.listeCandidats.splice(i, 1);
+  }
+
   constructor() {}
 
   showInfos() {
