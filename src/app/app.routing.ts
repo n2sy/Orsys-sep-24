@@ -85,4 +85,4 @@ const myRoutes: Routes = [
   // { path: '**', redirectTo: 'not-found' }, // wild route
 ];
 
-export let INETUM_ROUTING = RouterModule.forRoot(myRoutes);
+export let INETUM_ROUTING = RouterModule.forRoot(myRoutes, { useHash: true });
